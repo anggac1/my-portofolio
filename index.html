@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portofolio Aditya</title>
+    
+    <link rel="stylesheet" href="styles/main.css">
+</head>
+<body>
+    <div class="hamburger" onclick="toggleSidebar()">
+    <span></span>
+    <span></span>
+    <span></span>
+    </div>
+
+    <nav class="sidebar" id="sidebar">
+        <h1>PORTOFOLIO</h1>
+        <ul class="nav-menu">
+            <li class="nav-item active" onclick="showSection('about', this)">About Me</li>
+            <li class="nav-item" onclick="showSection('activity', this)">My Activity</li>
+            <li class="nav-item" onclick="showSection('project', this)">My Project</li>
+        </ul>
+        <button class="mode-toggle" onclick="toggleMode()">🌓 Switch Mode</button>
+    </nav>
+
+    <main class="main-content">
+        <section id="about" class="section active">
+            <h2>About Me</h2>
+            <p>
+                Mahasiswa Statistika Semester 6 yang memiliki ketertarikan mendalam pada Machine Learning, Data Science, dan Artificial Intelligence. 
+                Berfokus pada pemanfaatan teknik statistika untuk pengembangan solusi berbasis data yang akurat.
+            </p>
+            <p>
+                <br><br>
+                <h3>Social Media: </h3> <br>
+                LinkedIn: <a href="https://www.linkedin.com/in/adityawahib" target="_blank">https://www.linkedin.com/in/adityawahib</a><br>
+                GitHub: <a href="https://www.github.com/anggac1" target="_blank">https://www.github.com/anggac1</a><br>
+                Instagram: <a href="https://www.instagram.com/aditya.wahib" target="_blank">https://www.instagram.com/aditya.wahib</a>
+            </p>
+            
+        </section>
+
+        <section id="activity" class="section">
+            <h2>My Activity</h2>
+            <p>
+                Saat ini sedang aktif mengikuti program Studi Independen di Dicoding pada alur Machine Learning hingga Januari 2026. 
+                Selain itu, tengah menjalankan Kerja Praktik di PDAM Surabaya hingga Februari 2026.
+            </p>
+        </section>
+
+        <section id="project" class="section">
+            <h2>My Project</h2>
+            <p>
+                <strong>Interview Analysis Tool:</strong> Mengembangkan alat penilaian wawancara berbasis AI. 
+                Proyek ini mengintegrasikan FastAPI dengan Whisper untuk transkripsi, MediaPipe untuk pelacakan fokus mata, serta Gemini AI untuk penilaian otomatis.
+                link project: <a href="https://huggingface.co/spaces/handraaaa95/Interview-analysis" target="_blank">https://huggingface.co/spaces/handraaaa95/Interview-analysis</a>
+
+            </p>
+        </section>
+    </main>
+
+    <script>
+    function showSection(sectionId, element) {
+        // 1. Update menu aktif
+        document.querySelectorAll('.nav-item').forEach(item => item.classList.remove('active'));
+        element.classList.add('active');
+
+        // 2. Tampilkan konten yang dipilih
+        document.querySelectorAll('.section').forEach(section => section.classList.remove('active'));
+        document.getElementById(sectionId).classList.add('active');
+
+        // 3. Tutup sidebar otomatis setelah memilih menu (khusus mobile/layar kecil)
+        if (window.innerWidth <= 768) {
+            toggleSidebar();
+        }
+        
+        window.scrollTo(0, 0);
+    }
+
+    function toggleSidebar() {
+        // Mencari elemen dengan ID sidebar yang tadi kita tambahkan
+        const sidebar = document.getElementById('sidebar');
+        sidebar.classList.toggle('active');
+        // Tambahkan baris ini tepat di bawah baris sidebar.classList.toggle('active');
+        document.querySelector('.main-content').classList.toggle('shift');
+    }
+
+    function toggleMode() {
+        const body = document.body;
+        const isLight = body.getAttribute('data-theme') === 'light';
+        body.setAttribute('data-theme', isLight ? '' : 'light');
+    }
+</script>
+</body>
+</html>
